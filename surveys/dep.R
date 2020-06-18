@@ -1,0 +1,5 @@
+install.packages("devtools",repos = "http://cran.us.r-project.org")
+install.packages("roxygen2",repos = "http://cran.us.r-project.org")
+install.packages("readr",repos = "http://cran.us.r-project.org")
+install.packages("dplyr",repos = "http://cran.us.r-project.org")
+install.packages("lubridate",repos = "http://cran.us.r-project.org")

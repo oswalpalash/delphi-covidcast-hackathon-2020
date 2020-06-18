@@ -6,8 +6,15 @@ The indicator is run by installing the package `delphiSurvey` and running the sc
 "run.R". To install the pacakge, run the following code from this directory:
 
 ```
-R CMD build delphiSurvey
+R CMD build delphiSurveys
 R CMD INSTALL delphiSurvey_1.0.tar.gz
+```
+
+If you see problems installing the built package, you might need to install basic R packages.
+To do this, run the following code from this directory:
+
+```
+Rscript dep.R
 ```
 
 All of the user-changable parameters are stored in `params.json`. A template is
