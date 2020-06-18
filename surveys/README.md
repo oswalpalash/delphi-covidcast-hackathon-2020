@@ -10,7 +10,7 @@ R CMD build delphiSurveys
 R CMD INSTALL delphiSurvey_1.0.tar.gz
 ```
 
-If you see problems installing the built package, you might need to install basic R packages.
+If you see problems installing the built package, you might need to install some additional dependencies.
 To do this, run the following code from this directory:
 
 ```
