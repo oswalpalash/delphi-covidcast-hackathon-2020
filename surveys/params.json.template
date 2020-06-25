@@ -15,7 +15,7 @@
   "output": [
     "cids",
     "individual",
-    "covidalert",
+    "covidcast",
     "archive",
     "community"
   ],

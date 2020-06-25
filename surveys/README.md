@@ -7,7 +7,7 @@ The indicator is run by installing the package `delphiSurvey` and running the sc
 
 ```
 R CMD build delphiSurveys
-R CMD INSTALL delphiSurvey_1.0.tar.gz
+R CMD INSTALL delphiSurveys_1.0.tar.gz
 ```
 
 If you see problems installing the built package, you might need to install some additional dependencies.
@@ -34,7 +34,7 @@ The documentation for the package is written using the **roxygen2** packaage. To
 directory:
 
 ```
-R -e 'roxygen2::roxygenise("delphiSurvey")'
+R -e 'roxygen2::roxygenise("delphiSurveys")'
 ```
 
 Testing the package is done with the build-in R package checks (which include both
@@ -42,47 +42,51 @@ static and dynamic checks), as well as unit tests written with **testthat**. To 
 of these, use the following from within this directory:
 
 ```
-R CMD build delphiSurvey
-R CMD CHECK delphiSurvey_1.0.tar.gz
+R CMD build delphiSurveys
+R CMD CHECK delphiSurveys_1.0.tar.gz
 ```
 
 None of the tests should fail and notes and warnings should be manually checked for issues.
 To see the code coverage from the tests and example run the following:
 
 ```
-Rscript -e 'covr::package_coverage("delphiSurvey")'
+Rscript -e 'covr::package_coverage("delphiSurveys")'
 ```
 
 There should be good coverage of all the core functions in the package.
 
 ## Outline of the Indicator
 
-The symptom and behavior surveys are one of our most complex data pipelines. At a high level,
-the pipeline must do the following:
+The symptom and behavior surveys are one of our most complex data pipelines. At
+a high level, the pipeline must do the following each morning:
 
-1. Download the latest survey from Qualtrics and place it in a CSV. This is done
-   by a Python script using the Qualtrics API (not yet in this repository).
+1. Obtain the latest survey response file from Qualtrics. For the hackathon,
+   we've supplied this file for you; in the production version, this is done by
+   a Python script using the Qualtrics API.
 2. Read the survey data. This package extracts a unique token from each survey
-   response and saves these to an output file; the automation script driving
-   this package uses SFTP to send this file to the appropriate survey partner.
-3. Download the latest survey weights computed by our survey partner for the tokens we
-   provide. Our survey partner usually provides survey weights within one day, so our
-   pipeline can produce weighted estimates a day after unweighted estimates. The
-   download is managed by the same automation script, not this package.
+   response and saves these to an output file. For the hackathon, we can discard
+   this file; in the production version, the automation script driving this
+   package uses SFTP to send this file to the appropriate survey partner for
+   processing.
+3. Obtain the latest survey weights computed by our survey partner for the
+   tokens we provide. For the hackathon, we have included all weights files in
+   the synthetic data; in the production version, the automation script driving
+   this package would uses SFTP to download the weights file.
+   
+   Our survey partner usually provides survey weights within one day, so our
+   pipeline can produce weighted estimates a day after unweighted estimates.
 4. Aggregate the data and produce survey estimates.
-5. Write the survey estimates to covidalert CSV files: one per day per signal
+5. Write the survey estimates to COVIDcast CSV files: one per day per signal
    type and geographic region type. (For example, there will be one CSV
    containing every unweighted unsmoothed county estimate for one signal on
    2020-05-10.)
 6. Validate these estimates against basic sanity checks. (Not yet implemented in
    this pipeline!)
-7. Push the CSV files to the API server. Also done by the automation script, not
-   by this package.
-
 
 Mathematical details of how the survey estimates are calculated are given in the
-signal descriptions PDF in the `covid-19` repository. This pipeline currently
-calculates two basic types of survey estimates:
+signal descriptions PDF in the `data` directory at the root of this
+repository. This pipeline currently calculates two basic types of survey
+estimates:
 
 1. Estimates of the fraction of individuals with COVID-like or influenza-like
    illness. The survey includes questions about how many people in your
