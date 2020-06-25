@@ -27,45 +27,23 @@ To execute the module and produce the output datasets (by default, in
 Rscript run.R
 ```
 
-## Building and testing the code
+## Testing the code
 
-The documentation for the package is written using the **roxygen2** packaage. To
-(re)-create this documentation for the package, run the following from the package
+The package dependencies and documentation are managed using the **roxygen2** package. To
+re-build the documentation and dependency list, run the following from the `surveys`
 directory:
 
 ```
 R -e 'roxygen2::roxygenise("delphiSurveys")'
 ```
 
-Testing the package is done with the build-in R package checks (which include both
-static and dynamic checks), as well as unit tests written with **testthat**. To run all
-of these, use the following from within this directory:
+Testing the package is done with **testthat**. To run all tests,
 
-```
-R CMD build delphiSurveys
-R CMD CHECK delphiSurveys_1.0.1.tar.gz
-```
+1. Set your R working directory to `delphiSurveys/tests/testthat`.
+2. Run `testthat::test_dir('.')`
 
-Some versions of R may need to specify `check` (lowercase) instead of `CHECK`.
-
-None of the tests should fail and notes and warnings should be manually checked for issues.
-To see the code coverage from the tests and example run the following:
-
-```
-Rscript -e 'covr::package_coverage("delphiSurveys")'
-```
-
-There should be good coverage of all the core functions in the package.
-
-### Testing during development
-
-Repeatedly building the package and running the full check suite is tedious if
-you are working on fixing a failing test. A faster workflow is this:
-
-1. Set your R working directory to the `delphiSurveys` directory.
-2. Run `devtools::test()`
-
-This will test the live code without having to rebuild the package.
+*Note for R pros:* Package tests using `R CMD check` currently do not pass, as
+they are not compatible with the gold output checks included for the hackathon.
 
 ## Outline of the Indicator
 
