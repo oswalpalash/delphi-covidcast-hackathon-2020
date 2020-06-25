@@ -43,8 +43,10 @@ of these, use the following from within this directory:
 
 ```
 R CMD build delphiSurveys
-R CMD CHECK delphiSurveys_1.0.tar.gz
+R CMD CHECK delphiSurveys_1.0.1.tar.gz
 ```
+
+Some versions of R may need to specify `check` (lowercase) instead of `CHECK`.
 
 None of the tests should fail and notes and warnings should be manually checked for issues.
 To see the code coverage from the tests and example run the following:
@@ -54,6 +56,16 @@ Rscript -e 'covr::package_coverage("delphiSurveys")'
 ```
 
 There should be good coverage of all the core functions in the package.
+
+### Testing during development
+
+Repeatedly building the package and running the full check suite is tedious if
+you are working on fixing a failing test. A faster workflow is this:
+
+1. Set your R working directory to the `delphiSurveys` directory.
+2. Run `devtools::test()`
+
+This will test the live code without having to rebuild the package.
 
 ## Outline of the Indicator
 
@@ -83,10 +95,10 @@ a high level, the pipeline must do the following each morning:
 6. Validate these estimates against basic sanity checks. (Not yet implemented in
    this pipeline!)
 
-Mathematical details of how the survey estimates are calculated are given in the
-signal descriptions PDF in the `data` directory at the root of this
-repository. This pipeline currently calculates two basic types of survey
-estimates:
+Hackathon addition: Mathematical details of how the survey estimates are
+calculated are given in the signal descriptions PDF in the `data` directory at
+the root of this repository. This pipeline currently calculates two basic types
+of survey estimates:
 
 1. Estimates of the fraction of individuals with COVID-like or influenza-like
    illness. The survey includes questions about how many people in your

@@ -18,13 +18,13 @@ summarize_binary(
 
 \item{crosswalk_data}{a named list containing geometry crosswalk files from zip5 values}
 
-\item{var_yes}{name of the variable containing the number of "yes" responses}
+\item{var_yes}{name of the column in `df` containing the number of "yes" responses}
 
-\item{var_weight}{name of the variable containing the survey weights}
+\item{var_weight}{name of the column in `df` containing the survey weights}
 
 \item{params}{a named list with entries "start_time", and "end_time"}
 
-\item{smooth_days}{integer; how many days in the past to smooth ?}
+\item{smooth_days}{integer; how many days in the past to smooth?}
 }
 \description{
 Summarize binary variables at a geographic level

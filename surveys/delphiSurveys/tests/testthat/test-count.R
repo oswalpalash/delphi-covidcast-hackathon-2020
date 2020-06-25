@@ -1,4 +1,4 @@
-library(delphiSurvey)
+library(delphiSurveys)
 library(dplyr)
 
 context("Testing functions for producing estimates of the household county metrics")

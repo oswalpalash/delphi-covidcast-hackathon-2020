@@ -3,7 +3,7 @@
 ### which loads `input/responses.csv`, a small selected subset of test
 ### responses.
 
-library(delphiSurvey)
+library(delphiSurveys)
 library(dplyr)
 library(readr)
 library(stringi)

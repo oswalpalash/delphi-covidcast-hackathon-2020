@@ -1,4 +1,4 @@
-library(delphiSurvey)
+library(delphiSurveys)
 library(jsonlite)
 
 context("Testing geographic crosswalk file creation")

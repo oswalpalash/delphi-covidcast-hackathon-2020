@@ -1,4 +1,4 @@
-library(delphiSurvey)
+library(delphiSurveys)
 
 files <- c(
   dir("individual", full.names = TRUE, all.files = TRUE, no.. = TRUE),

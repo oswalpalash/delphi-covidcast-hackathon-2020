@@ -1,5 +1,5 @@
 library(testthat)
-library(delphiSurvey)
+library(delphiSurveys)
 
-test_check("delphiSurvey", stop_on_warning = FALSE)
+test_check("delphiSurveys", stop_on_warning = FALSE)
 
