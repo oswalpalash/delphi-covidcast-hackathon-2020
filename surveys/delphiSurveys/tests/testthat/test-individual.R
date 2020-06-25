@@ -1,4 +1,4 @@
-library(delphiSurvey)
+library(delphiSurveys)
 library(dplyr)
 library(lubridate)
 library(readr)

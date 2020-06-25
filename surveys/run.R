@@ -1,4 +1,3 @@
-library(delphiSurvey)
+library(delphiSurveys)
 
-Rprof(interval = 0.005)
-delphiSurvey::run_survey()
+delphiSurveys::run_survey()

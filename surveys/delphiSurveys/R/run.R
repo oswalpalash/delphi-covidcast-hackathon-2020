@@ -20,7 +20,7 @@ run_survey <- function(parameter_path = "params.json")
   input_data <- filter_responses(input_data, archive$seen_tokens, params)
   msg_df("response input data", input_data)
 
-  # create data that will be aggregated for covidcast
+  # create data that will be aggregated for COVIDcast
   data_agg <- create_data_for_aggregatation(input_data)
   data_agg <- filter_data_for_aggregatation(data_agg)
   data_agg <- join_weights(data_agg, params, weights = "step1")
@@ -46,14 +46,18 @@ run_survey <- function(parameter_path = "params.json")
   {
     write_individual(data_full, params)
   }
-  if ( "covidalert" %in% params$output )
+  if ( "covidcast" %in% params$output )
   {
     write_hh_count_data(data_agg, cw_list, params)
   }
   if ( "community" %in% params$output )
   {
     write_binary_variable(
-      data_agg, cw_list, "community_yes", params, metric = "community"
+      data_agg, cw_list, "community_yes", params, metric = "nohh_cmnty_cli"
+    )
+
+    write_binary_variable(
+      data_agg, cw_list, "hh_community_yes", params, metric = "hh_cmnty_cli"
     )
   }
 
