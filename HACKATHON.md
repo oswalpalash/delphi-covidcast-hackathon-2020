@@ -38,7 +38,7 @@ To get started, follow the directions in `surveys/README.md`.
 We have provided you with the following datasets in the `data` directory:
 
 * `survey-questions/` - A copy of the survey questions for all language locales currently running in the US
-* `survey-data.tgz` - Synthetic data for a period from April 6, 2020 to June 8, 2020. This file is too big for git, but you can fetc it from the v1.0.1 release. Package includes:
+* `survey-data.tgz` - Synthetic data for a period from April 6, 2020 to June 8, 2020. This file is too big for git, but you can fetch it from the [v1.0.1 release](https://github.com/krivard/delphi-covidcast-hackathon-2020/releases/tag/1.0.1-hackathon). Package includes:
   * `survey-data/input/` - Raw survey data
   * `survey-data/weights_in/` - Accompanying weights
   * `survey-data/receiving_gold/` - Correct output files for Household CLI and Community CLI
