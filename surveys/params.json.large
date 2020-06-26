@@ -1,0 +1,28 @@
+{
+  "start_date": "2020-04-06",
+  "end_date": "2020-06-08",
+  "static_dir": "./static",
+  "export_dir": "./receiving",
+  "cache_dir": "./cache",
+  "archive_dir": "./archive",
+  "individual_dir": "./individual",
+  "weights_in_dir": "../data/survey-data/weights_in",
+  "weights_out_dir": "./weights_out",
+  "input_dir": "../data/survey-data/input",
+  "input": [
+    "2020-04-13.2020-04-06.2020-04-13.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-04-20.2020-04-13.2020-04-20.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-04-27.2020-04-20.2020-04-27.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-05-04.2020-04-27.2020-05-04.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-05-11.2020-05-04.2020-05-11.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-05-18.2020-05-11.2020-05-18.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-05-25.2020-05-18.2020-05-25.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-06-01.2020-05-25.2020-06-01.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv",
+    "2020-06-08.2020-06-01.2020-06-08.Survey_of_COVID-Like_Illness_-_TODEPLOY_2020-04-06.csv"
+  ],
+  "output": [
+    "covidcast",
+    "community"
+  ],
+  "debug": false
+}
