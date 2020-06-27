@@ -21,6 +21,7 @@ Imports:
     dplyr,
     stringi,
     jsonlite,
+    parallel,
     lubridate
 Suggests:
     knitr (>= 1.15),
