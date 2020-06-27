@@ -46,6 +46,7 @@ load_response_one <- function(input_filename, params)
   input_data$hh_cough <- (input_data$A1_3 == 1L)
   input_data$hh_short_breath <- (input_data$A1_4 == 1L)
   input_data$hh_diff_breath <- (input_data$A1_5 == 1L)
+  input_data$hh_cough_mucus <- (input_data$B4 == 1L)
   suppressWarnings({ input_data$hh_number_sick <- as.integer(input_data$A2) })
   suppressWarnings({ input_data$hh_number_total <- as.integer(input_data$A2b) })
   input_data$zip5 <- input_data$A3
@@ -113,14 +114,14 @@ create_data_for_aggregatation <- function(input_data)
   df$day <- stri_replace_all(df$date, "", fixed = "-")
 
   # create variables for cli and ili signals
-  hh_cols <- c("hh_fever", "hh_soar_throat", "hh_cough", "hh_short_breath", "hh_diff_breath")
+  hh_cols <- c("hh_fever", "hh_soar_throat", "hh_cough", "hh_short_breath", "hh_diff_breath", "hh_cough_mucus")
   df$cnt_symptoms <- apply(df[,hh_cols], 1, sum, na.rm = TRUE)
   df$hh_number_sick[df$cnt_symptoms <= 0] <- 0
   df$is_cli <- df$hh_fever & (
-    df$hh_cough | df$hh_short_breath | df$hh_diff_breath
+    df$hh_short_breath | df$hh_diff_breath | ( df$hh_cough & df$hh_cough_mucus )
   )
   df$is_cli[is.na(df$is_cli)] <- FALSE
-  df$is_ili <- df$hh_fever & (df$hh_soar_throat | df$hh_cough)
+  df$is_ili <- df$hh_fever & (df$hh_soar_throat | (df$hh_cough & df$hh_cough_mucus))
   df$is_ili[is.na(df$is_ili)] <- FALSE
   df$hh_p_cli <- 100 * df$is_cli * df$hh_number_sick / df$hh_number_total
   df$hh_p_ili <- 100 * df$is_ili * df$hh_number_sick / df$hh_number_total
