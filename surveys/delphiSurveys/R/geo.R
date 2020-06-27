@@ -74,7 +74,7 @@ produce_crosswalk_national <- function(zip_metadata)
 #' @export
 produce_crosswalk_county <- function(static_dir, zip_metadata)
 {
-  cl <- makeCluster(detectCores())
+  cl <- makeCluster(detectCores()-1)
   cweights <- parLapply(cl, zip_metadata$county_weights, fromJSON)
   crosswalk_county <- tibble(
     zip5 = rep(zip_metadata$zip5, parSapply(cl, cweights, length)),

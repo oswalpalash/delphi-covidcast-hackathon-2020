@@ -22,6 +22,7 @@ Imports:
     stringi,
     jsonlite,
     parallel,
+    data.table,
     lubridate
 Suggests:
     knitr (>= 1.15),

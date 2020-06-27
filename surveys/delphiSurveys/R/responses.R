@@ -114,7 +114,7 @@ create_data_for_aggregatation <- function(input_data)
 
   # create variables for cli and ili signals
   hh_cols <- c("hh_fever", "hh_soar_throat", "hh_cough", "hh_short_breath", "hh_diff_breath")
-  cl <- makeCluster(detectCores())
+  cl <- makeCluster(detectCores()-1)
   df$cnt_symptoms <- parApply(cl, df[,hh_cols], 1, sum, na.rm = TRUE)
   stopCluster(cl)
   df$hh_number_sick[df$cnt_symptoms <= 0] <- 0
